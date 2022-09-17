@@ -1,0 +1,58 @@
+{% extends 'layout.html'%}
+{% block content %}
+<div class="home-container">
+    <div class="container-lg">
+        <div class="py-5">
+            <div class="row  justify-content-center">
+                <div class="col-md-9">
+                    <div class="bg-white rounded">
+                        <div class="p-3">
+                            <div class="p-2">
+                                <div class="d-flex">
+                                    <div class="pe-3">
+                                        <a href="{% url 'listdepartment' %}">
+                                            <i class="fa fa-chevron-left fa-lg text-success" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="fw-normal text-success"> {{name}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <form method="post" action="">
+                                <div class="small">
+                                    {% csrf_token %}
+                                    {{ dpform.as_p}}
+                                </div>
+                                <!-- <div class="my-3">
+                                    <label for="name" class="form-label small">Name</label>
+                                    <input type="text" class="form-control forms-fonts" id="name" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descr" class="form-label small">Description</label>
+                                    <textarea class="form-control forms-fonts" id="descr" rows="3"></textarea>
+                                </div> -->
+                                <div class="mb-2">
+                                    {% if edit %}
+                                    <a class="btn btn-danger me-2 action-btn" type="submit"
+                                        href="{% url 'deldepartment' department.id %}">
+                                        Delete
+                                    </a>
+                                    {% endif %}
+
+                                    <button class="btn btn-primary me-2 action-btn" type="submit">
+                                        {{name}}
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

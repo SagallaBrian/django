@@ -1,0 +1,100 @@
+{% extends 'layout.html'%}
+{% block content %}
+<div class="home-container">
+    <div class="container-lg">
+        <div class="py-5">
+            <div class="row  justify-content-center">
+                <div class="col-md-9">
+                    <div class="bg-white rounded">
+                        <div class="p-3">
+                            <div class="p-2">
+                                <div class="d-flex">
+                                    <div class="pe-3">
+                                        <a href="/">
+                                            <i class="fa fa-chevron-left fa-lg text-success" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="fw-normal text-success"> {{name}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <form method="post" action="">
+                                {% csrf_token %}
+
+                                <div class="">
+                                    <div class="row my-3">
+                                        <div class="col-md-6">
+                                            <label for="firstnme" class="small">First Name</label>
+                                            {{empform.firstnme}}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lastname" class="small">Last Name</label>
+                                            {{empform.lastname}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+
+                                        <div class="col-md-6">
+                                            <label for="department" class="small">Department</label>
+                                            {{empform.department}}
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="address" class="small">Address</label>
+                                            {{empform.address}}
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="salary" class=" small">Salary</label>
+                                            {{empform.salary}}
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="doj" class=" small">Join Date</label>
+                                            {{empform.doj}}
+
+                                        </div>
+                                    </div>
+
+                                    <!-- {% for field in empform %}
+                                    <div class="py-3">
+                                        {{ field.errors }}
+                                        {{ field.label_tag }} {{ field }}
+                                        {% if field.help_text %}
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %} -->
+                                </div>
+                                <!-- <div class="my-3">
+                                    <label for="name" class=" small">Name</label>
+                                    <input type="text" class="form-control forms-fonts" id="name" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descr" class=" small">Description</label>
+                                    <textarea class="form-control forms-fonts" id="descr" rows="3"></textarea>
+                                </div> -->
+                                <div class="mb-2">
+                                    {% if edit %}
+                                    <a class="btn btn-danger me-2 action-btn" type="submit"
+                                        href="{% url 'deletemployee' employee.id %}">
+                                        Delete
+                                    </a>
+                                    {% endif %}
+
+                                    <button class="btn btn-primary me-2 action-btn" type="submit">
+                                        {{name}}
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,78 @@
+{% extends 'layout.html'%}
+{% block content %}
+<div class="home-container">
+    <div class="container-lg">
+        <div class="py-5">
+            <div class="home-title rounded p-2 mis-semibold mb-3">
+                {{name}}
+            </div>
+            <div class="bg-white">
+                <div class="p-3 d-flex">
+                    <div class="flex-grow-1">
+                        <a class="btn btn-warning me-2 action-btn" href="{% url 'addepartment' %}">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            Add
+                        </a>
+                        <button class="btn btn-primary me-2 action-btn">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            Edit
+                        </button>
+                        <button class="btn btn-success me-2 action-btn">
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                            Save
+                        </button>
+                        <button class="btn btn-secondary me-2 action-btn">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                            Refresh
+                        </button>
+                        <a class="btn btn-danger me-2 action-btn" href="{% url 'logout' %}">
+                            <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                            Exit
+                        </a>
+                    </div>
+                    <div>
+                        <a class="btn btn-primary me-2 action-btn" href="{% url 'listEmployees' %}">
+                            Manage Employees
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-3">
+                    <table class="table table-fonts">
+                        <thead>
+                            <tr>
+                                <th class="mis-semibold">ID</th>
+                                <th class="mis-semibold">Name</th>
+                                <th class="mis-semibold">Description</th>
+                                <th class="mis-semibold">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for department in departmentlist %}
+                            <tr>
+                                <td>{{department.id}}</td>
+                                <td>{{department.name}}</td>
+                                <td>{{department.description}}</td>
+                                <td class="text-nowrap">
+                                    <!-- <a class="btn btn-sm btn-outline-primary" href="/home/{{department.emp_id}}">Edit</a> -->
+                                    <!-- or -->
+                                    <a class="btn btn-sm btn-outline-primary"
+                                        href="{% url 'editdepartment' department.id %}">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}

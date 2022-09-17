@@ -1,0 +1,55 @@
+{% extends 'layout.html'%}
+{% block content %}
+<div class="login-container">
+    <div class="container-lg">
+        <div class="py-5">
+            <div class="row">
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-white rounded shadow-sm">
+                        <div class="loginheader p-3">Login with Baba !</div>
+                        <div class="text-center py-3">Enter Login Credentilas</div>
+                        <div class="p-3">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div{% if message.tags %} class="small alert alert-{{ message.tags }}" {% endif %}>
+                                {{ message }}
+                        </div>
+                        <div class="py-1"></div>
+                        {% endfor %}
+                        {% endif %}
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="small">
+                                {{form.as_p}}
+                            </div>
+
+                            <!-- <div class="mb-3">
+                                    <label for="usrnm" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="usrnm" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="passwd" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="passwd" />
+                                </div> -->
+                            <div class="mb-3 text-end small">
+                                <a href="">Forgot Password ?</a>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <button type="submit" class="btn login-btn text-uppercase">
+                                    Let me In
+                                </button>
+
+                                <div class="mt-2 small">
+                                    New Here <a href="{% url 'register' %}">Sign up ?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}
